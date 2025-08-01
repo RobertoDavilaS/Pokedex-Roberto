@@ -1,0 +1,446 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === RESET + FUENTE === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+
+  background-image: url('https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2025/02/todos-juegos-pokemon-ordenados-peor-mejor-cual-mejor-orden-jugarlos-4295768.jpg?tf=1920x');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+/* === CONTENEDOR GENERAL === */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* === HEADER === */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1,
+header h2 {
+  color: #ef5350;
+  text-shadow: 2px 2px 0px #222;
+}
+
+/* === FORMULARIO DE FILTRO === */
+form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+form input[type="text"],
+form select {
+  padding: 0.75rem 1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  border: 2px solid #3b4cca;
+  background-color: white;
+  outline: none;
+  min-width: 200px;
+  text-transform: capitalize;
+}
+
+form input[type="text"]:focus,
+form select:focus {
+  border-color: #ef5350;
+  box-shadow: 0 0 5px #ef5350;
+}
+
+/* === TARJETAS DE POKEMON === */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 0.3rem;  /* espacio horizontal */
+  row-gap: 1rem;       /* espacio vertical */
+  justify-items: center;
+  max-width: 1100px;   /* opcional: limitar el ancho total */
+  margin: 0 auto;      /* centrar el grid */
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+}
+
+.card {
+  background: white;
+  border: 4px solid #3b4cca;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(59, 76, 202, 0.3);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 260px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card-image {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.card-id {
+  font-size: 0.6rem;
+  color: #3b4cca;
+}
+
+.card-name {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #ef5350;
+  text-transform: capitalize;
+}
+
+.card-types {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.type-badge {
+  font-size: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 20px;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+/* === PAGINACIÓN === */
+.content {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.content button {
+  font-family: inherit;
+  font-size: 0.6rem;
+  padding: 0.4rem 0.8rem;
+  margin: 0 0.2rem;
+  border: none;
+  border-radius: 20px;
+  background-color: #3b4cca;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.content button:hover {
+  background-color: #2a3b99;
+}
+
+.content button.active {
+  background-color: #ef5350;
+}
+
+.content span {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.7rem;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    width: 90%;
+  }
+}
+
+/* === COLORES POR TIPO === */
+.type-fire { background-color: #f08030; }
+.type-water { background-color: #6890f0; }
+.type-grass { background-color: #78c850; }
+.type-electric { background-color: #f8d030; color: #000; }
+.type-psychic { background-color: #f85888; }
+.type-ice { background-color: #98d8d8; color: #000; }
+.type-dragon { background-color: #7038f8; }
+.type-dark { background-color: #705848; }
+.type-fairy { background-color: #ee99ac; color: #000; }
+.type-normal { background-color: #a8a878; color: #000; }
+.type-bug { background-color: #a8b820; color: #000; }
+.type-poison { background-color: #a040a0; }
+.type-ground { background-color: #e0c068; color: #000; }
+.type-flying { background-color: #a890f0; }
+.type-rock { background-color: #b8a038; color: #000; }
+.type-steel { background-color: #b8b8d0; color: #000; }
+.type-ghost { background-color: #705898; }
+.type-fighting { background-color: #c03028; }
+
+.form-home {
+  text-align: center;
+  padding: 2rem;
+  font-size: 2rem;
+  background: rgba(255, 255, 255, 0.8); /* blanco semi-transparente */
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 2rem auto; /* centra horizontalmente */
+}
+
+.input-home {
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  border: 2px solid #3b4cca;
+  border-radius: 50px;
+  outline: none;
+  margin: 1rem 0;
+  min-width: 250px;
+  background-color: #fff;
+  text-transform: capitalize;
+}
+
+.input-home:focus {
+  border-color: #ef5350;
+  box-shadow: 0 0 5px #ef5350;
+}
+
+.btn-home {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.8rem;
+  background-color: #ef5350;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+}
+
+.btn-home:hover {
+  background-color: #d32f2f;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.75rem;
+  margin-top: 1rem;
+}
+
+
+.details-container {
+  max-width: 960px; /* No ocupa todo el ancho */
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: 'Press Start 2P', cursive;
+  color: #333;
+}
+
+/* Header Volver */
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+.back-link:hover {
+  color: #ef5350;
+}
+
+/* Tarjeta principal */
+.details-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(59, 76, 202, 0.15);
+  border: 4px solid #3b4cca;
+  padding: 2rem;
+}
+
+/* Header con imagen y nombre */
+.details-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.details-id {
+  font-size: 0.8rem;
+  color: #3b4cca;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.details-name {
+  font-size: 2rem;
+  color: #ef5350;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 0 #222;
+}
+
+.details-img {
+  width: 180px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 0 6px #3b4cca);
+}
+
+/* Grid para las secciones */
+.details-sections-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content:center;
+}
+
+/* Cada tarjeta */
+.details-card-section {
+  background-color: #f4f6ff;
+  border: 2px solid #3b4cca;
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 3px 8px rgba(59, 76, 202, 0.15);
+  text-align: center;
+
+  width: fit-content;
+  min-width: 160px;
+  max-width: 320px;
+  flex: 0 1 auto;
+}
+
+/* Títulos */
+.details-card-section h2 {
+  color: #ef5350;
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  text-transform: capitalize;
+  text-shadow: 1px 1px 0 #222;
+}
+
+/* Listas comunes */
+.details-list,
+.details-stats,
+.details-moves {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 140px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  text-align: left;
+}
+
+/* Scrollbar discreto */
+.details-list::-webkit-scrollbar,
+.details-stats::-webkit-scrollbar,
+.details-moves::-webkit-scrollbar {
+  width: 6px;
+}
+.details-list::-webkit-scrollbar-thumb,
+.details-stats::-webkit-scrollbar-thumb,
+.details-moves::-webkit-scrollbar-thumb {
+  background-color: #3b4cca;
+  border-radius: 3px;
+}
+
+/* Badges para tipos */
+.type-badge {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  color: #fff;
+  margin: 0 0.2rem 0.3rem 0.2rem;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+/* Items dentro de listas */
+.details-list li,
+.details-stats li,
+.details-moves li {
+  margin-bottom: 0.3rem;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .details-sections-grid {
+    justify-content: center;
+  }
+  .details-card-section {
+    min-width: 120px;
+    max-width: 90vw;
+    width: fit-content;
+  }
+  .details-img {
+    width: 140px;
+  }
+}
+
+.pokedex-background {
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.pokedex-container {
+  background-color: rgba(255, 255, 255, 0.85); 
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 1200px;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.card,
+.details-card,
+.details-card-section {
+  background: rgba(255, 255, 255, 0.4); /* Fondo blanco semi-transparente */
+  backdrop-filter: blur(8px);           /* Difumina el fondo detrás */
+  border: 2px solid rgba(59, 76, 202, 0.4); /* Borde sutil translúcido */
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra suave */
+  transition: transform 0.3s ease;
+}
+
