@@ -3,7 +3,11 @@ import { useName } from '../context/nameContext'
 import axios from 'axios'
 import List from './List'
 
-const defaultType = {
+type DefaultType = {
+  [key: string]: string
+}
+
+const defaultType: DefaultType = {
   'ghost': 'Fantasma',
   'dark': 'Siniestro',
   'electric': 'Eléctrico',
@@ -24,10 +28,6 @@ const defaultType = {
   'fairy': 'Hada',
 }
 
-type DefaultType = {
-  [key: string]: string
-}
-
 type Pokemon = {
   name: string
   url: string
@@ -40,7 +40,6 @@ type TypeFiltered = {
   }
   slot: number
 }
-
 
 const baseUrl = 'https://pokeapi.co/api/v2/'
 
@@ -74,40 +73,40 @@ function Pokedex () {
 
   const filtered = (type ? typeFiltered : pokemons).filter(p => (
     p.name.toLowerCase().includes(value.toLowerCase())
-  )) // pikachu
+  ))
 
   return (
-  <div className="pokedex-background">
-    <div className="container pokedex-container">
-      <header>
-        <h2>Hola {name}, bienvenido a tu Pokedex</h2>
-      </header>
+    <div className="pokedex-background">
+      <div className="container pokedex-container">
+        <header>
+          <h2>Hola {name}, bienvenido a tu Pokedex</h2>
+        </header>
 
-      <form className="filter-form">
-        <input
-          type="text"
-          placeholder='Buscar tu Pokémon...'
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
+        <form className="filter-form">
+          <input
+            type="text"
+            placeholder='Buscar tu Pokémon...'
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
 
-        <select
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-          aria-label='Filtrar por tipo'
-        >
-          <option value="">Todos</option>
-          {Object.keys(defaultType).map((type: string) => (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          ))}
-        </select>
-      </form>
+          <select
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            aria-label='Filtrar por tipo'
+          >
+            <option value="">Todos</option>
+            {Object.keys(defaultType).map((typeKey: string) => (
+              <option key={typeKey} value={typeKey}>
+                {defaultType[typeKey]}
+              </option>
+            ))}
+          </select>
+        </form>
 
-      <List pokemons={filtered} />
+        <List pokemons={filtered} />
+      </div>
     </div>
-  </div>
   )
 }
 
